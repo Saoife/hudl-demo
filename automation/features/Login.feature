@@ -28,5 +28,15 @@ Scenario Outline: User cannot login with incorrect details
         | password |
 
 Scenario: User can navigate through the page using the keyboard only
+    When the user attempts to login using only the keyboard
+    Then the home page is displayed
 
-Scenario: XSS is not possible for text inputs
+Scenario Outline: XSS is not possible for text inputs
+    When the user enters a script into the <input> field
+    And the user attempts to login
+    Then an alert is not displayed
+
+    Examples:
+        | input    |
+        | email    |
+        | password |

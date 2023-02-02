@@ -1,13 +1,10 @@
-from behave import fixture
-from support.webdriver import WebDriver
-from pages.home_page import HomePage
+from support.webdriver_helper import WebDriverHelper
 
-@fixture
 def before_all(context):
-    context.webdriver = WebDriver(5)
+    context.webdriver_helper = WebDriverHelper(5)
 
 def after_scenario(context, scenario):
-    context.webdriver.driver.get('https://hudl.com/logout')
+    context.webdriver_helper.driver.get('https://hudl.com/logout')
 
 def after_all(context):
-    context.webdriver.dispose()
+    context.webdriver_helper.dispose()

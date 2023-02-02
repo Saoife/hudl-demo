@@ -12,4 +12,4 @@ class LoginPage(BasePage):
         self.driver.find_element(By.ID, 'logIn').click()
 
     def get_error_message(self):
-        self.driver.find_element(By.CSS_SELECTOR, '[data-qa-id="error-display"]').text
+        return self.webdriver_helper.get_by_qa_id('error-display').text
